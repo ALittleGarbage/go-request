@@ -226,7 +226,7 @@ func (hc *httpClient) Sync() ([]byte, error) {
 		return nil, fmt.Errorf("Sync() err:%s ", err)
 	}
 	if resp.StatusCode != http.StatusOK {
-		return nil, fmt.Errorf("Sync() StatusCode:[%s] ErrMsg:[%s] ", resp.Status, string(data))
+		return nil, fmt.Errorf("Sync() StatusCode:%s ErrMsg:%s ", resp.Status, string(data))
 	}
 	return data, nil
 }
@@ -272,7 +272,7 @@ func (hc *httpClient) Async(callback func([]byte), errCallback func(err error)) 
 			return
 		}
 		if resp.StatusCode != http.StatusOK {
-			e = errors.New("StatusCode:[" + resp.Status + "] ErrMsg:[" + string(data) + "]")
+			e = fmt.Errorf("Async() StatusCode:%s ErrMsg:%s ", resp.Status, string(data))
 			errCallback(e)
 		}
 		callback(data)
