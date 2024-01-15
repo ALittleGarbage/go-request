@@ -10,7 +10,7 @@
 | ----------- | --------------------------------------------- |
 | 起始函数    | DefReq()、Get()、Post()、Put()、Delete()      |
 | 设置请求头  | Header()                                      |
-| 设置url参数 | Param()                                       |
+| 设置urlParam | Param()                                       |
 | 设置请求体  | Stream()、Json()、Form()、Multipart()         |
 | 终结方法    | Sync()、Sync2String()、Sync2Struct()、Async() |
 
