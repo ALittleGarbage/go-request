@@ -21,8 +21,8 @@
 ```go
 func Test_GetParam(t *testing.T) {
 	type User struct {
-		Name string
-		Age  int
+		Name string `json:name`
+		Age  int    `json:age`
 	}
 
 	resp, err := request.Get("https://baidu.com").Debug().
@@ -50,7 +50,7 @@ func Test_GetParam(t *testing.T) {
 结果：
 
 ```plaintext
-+ [GET] https://baidu.com?a=1&b=2&c%5B0%5D=1&c%5B1%5D=2&c%5B2%5D=3&d.Age=18&d.Name=%E5%A4%A7%E9%BB%84
++ [GET] https://baidu.com?a=1&b=2&c%5B0%5D=1&c%5B1%5D=2&c%5B2%5D=3&d.age=18&d.name=%E5%A4%A7%E9%BB%84
 + Header:
 +--- Token : 123456789
 + Body:
@@ -62,8 +62,8 @@ resp:<!DOCTYPE html>.......
 ```go
 func Test_PostJson(t *testing.T) {
 	type User struct {
-		Name string
-		Age  int
+		Name string `json:name`
+		Age  int    `json:age`
 	}
 
 	resp, err := request.Post("https://baidu.com").Debug().
@@ -92,7 +92,7 @@ func Test_PostJson(t *testing.T) {
 +--- Content-Length : 26
 +--- Token : 123456789
 + Body:
-+--- {"Name":"大黄","Age":18}
++--- {"name":"大黄","age":18}
 resp:<!DOCTYPE html>....
 ```
 
